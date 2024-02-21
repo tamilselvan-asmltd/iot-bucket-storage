@@ -1,8 +1,6 @@
 import datetime
 import json  # Import the json module here
 from google.cloud import storage
-from google.auth.exceptions import DefaultCredentialsError
-from flask import abort
 
 
 # Function to upload files into a bucket
@@ -64,7 +62,7 @@ def To_Upload_Files_Into_Bucket(service_account_info, request_json, bucket_name)
             return "IncorrectBucketName"
         else:
             error_message = str(e)
-            print("PRINT ERROR :", error_message)
+            print("Print ERROR :", error_message)
             words = error_message.split()
 
             if error_message.startswith("Error:"):
@@ -183,5 +181,3 @@ def Get_Api_Data(request):
         return 'Method not allowed. Please use POST method.'
     # If everything is successful, return 200 OK
     return "Data uploaded into: {}".format(bucket_name), 200
-
-
